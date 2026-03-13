@@ -1,17 +1,18 @@
-const express = require('express');
-
-const productRoutes = require('./routes/productRoutes');
-const categoryRoutes = require('./routes/categoryRoutes');
-const orderRoutes = require('./routes/orderRoutes');
-
+const express = require("express");
 const app = express();
+
+const productRoutes = require("./routes/productRoutes");
+const categoryRoutes = require("./routes/categoryRoutes");
+const orderRoutes = require("./routes/orderRoutes");
 
 app.use(express.json());
 
-app.use(productRoutes);
-app.use(categoryRoutes);
-app.use(orderRoutes);
+app.use("/products", productRoutes);
+app.use("/categories", categoryRoutes);
+app.use("/orders", orderRoutes);
 
-app.listen(5000, () => {
-  console.log("Server running on port 5000");
+const PORT = 5000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
